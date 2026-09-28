@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design AI Lab</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div><div class="eyebrow">PLAYGROUND</div><h1>Design AI Lab</h1><p>מעבדת ניסוי ל‑Prompt, Schema, Validation ו‑Renderer של ספר הברכות</p></div>
+  <div class="top-actions"><button id="tabLab" class="primary">מעבדה</button><button id="tabHistory">היסטוריה <span id="historyCount" class="pill">0</span></button></div>
+</header>
+
+<section id="labView">
+  <section class="experiment-bar">
+    <label>שם ניסוי<input id="expName" value="P01 – baseline"></label>
+    <label>גרסת Prompt<input id="promptVersion" value="P01"></label>
+    <div class="row end"><button id="saveExp" class="primary">שמור ניסוי</button><button id="exportExp">Export JSON</button><button id="importExp">Import JSON</button><input id="importFile" hidden type="file" accept="application/json"></div>
+  </section>
+
+  <section class="grid">
+    <article class="panel test-panel">
+      <div class="panel-head"><div><span class="step">01</span><h2>Test Case</h2></div><span class="tag">INPUT</span></div>
+      <div class="form-grid">
+        <label>כותרת האירוע<input id="eventTitle"></label>
+        <label>שם האורח<input id="guestName"></label>
+        <label class="span2">ברכה<textarea id="greeting" rows="5"></textarea></label>
+        <label>יחס כרטיס<select id="ratio"><option>9:16</option><option>4:5</option><option>1:1</option></select></label>
+        <label>תמונה<div class="file-row"><button id="imageBtn" type="button">טען תמונה</button><button id="removeImage" type="button" hidden>הסר</button><input id="imageFile" hidden type="file" accept="image/*"></div></label>
+        <label class="span2">צבעים מותרים<input id="allowedColors" dir="ltr"></label>
+        <label class="span2">גופנים מותרים<input id="allowedFonts" dir="ltr"></label>
+        <label class="span2">Assets מותרים<input id="allowedAssets" dir="ltr"></label>
+      </div>
+      <div class="subsection"><div class="subhead"><strong>Protected Areas</strong><button id="addProtected">+ הוסף</button></div><div id="protectedAreas"></div></div>
+    </article>
+
+    <article class="panel prompt-panel">
+      <div class="panel-head"><div><span class="step">02</span><h2>Prompt Builder</h2></div><div class="row"><button id="addBlock">+ מקטע</button><button id="copyPrompt" class="primary">העתק Prompt</button></div></div>
+      <div class="mode-row"><label class="switch"><input id="rawMode" type="checkbox"><span>Raw Prompt mode</span></label><span id="promptLength" class="muted"></span></div>
+      <div id="blocks" class="blocks"></div>
+      <textarea id="rawPrompt" class="raw-editor" dir="ltr" hidden></textarea>
+    </article>
+
+    <article class="panel schema-panel">
+      <div class="panel-head"><div><span class="step">03</span><h2>AI Output Schema</h2></div><span class="tag">EDITABLE</span></div>
+      <p class="muted">ב‑V0 זהו חוזה לדוגמה בתוך ה‑Prompt, לא JSON Schema פורמלי. ניתן לשנות אותו חופשי.</p>
+      <textarea id="schema" class="code-editor" dir="ltr"></textarea>
+      <button id="resetSchema">אפס ל‑Schema v1</button>
+    </article>
+
+    <article class="panel response-panel">
+      <div class="panel-head"><div><span class="step">04</span><h2>AI Response</h2></div><span id="parseTag" class="tag">PARSED</span></div>
+      <textarea id="aiResponse" class="code-editor" dir="ltr" placeholder="הדבק כאן את תשובת ה‑AI..."></textarea>
+      <div class="subsection"><strong>Validation</strong><div id="validation" class="validation-list"></div></div>
+    </article>
+
+    <article class="panel renderer-panel">
+      <div class="panel-head"><div><span class="step">05</span><h2>Renderer / Preview</h2></div><label class="switch"><input id="showBoxes" type="checkbox" checked><span>Bounding Boxes</span></label></div>
+      <div class="preview-shell"><div id="canvas" class="canvas"></div></div>
+    </article>
+
+    <article class="panel notes-panel">
+      <div class="panel-head"><div><span class="step">06</span><h2>Experiment Notes</h2></div></div>
+      <textarea id="notes" rows="12" placeholder="מה עבד? מה לא? מה לשנות בניסוי הבא?"></textarea>
+      <div class="summary-box"><strong>מה נשמר ב‑Snapshot</strong><p>Test Case · Prompt blocks · Raw Prompt · Schema · AI Response · Notes</p></div>
+    </article>
+  </section>
+</section>
+
+<section id="historyView" class="history-page" hidden>
+  <div class="section-head"><div><h2>Experiment History</h2><p>כל שמירה היא snapshot מלא של הניסוי.</p></div></div>
+  <div id="historyGrid" class="history-grid"></div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
