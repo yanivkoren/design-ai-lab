@@ -28,7 +28,12 @@
         <label class="span2">ברכה<textarea id="greeting" rows="5"></textarea></label>
         <label>יחס כרטיס<select id="ratio"><option>9:16</option><option>4:5</option><option>1:1</option></select></label>
         <label>תמונה<div class="file-row"><button id="imageBtn" type="button">טען תמונה</button><button id="removeImage" type="button" hidden>הסר</button><input id="imageFile" hidden type="file" accept="image/*"></div></label>
-        <label class="span2">צבעים מותרים<input id="allowedColors" dir="ltr"></label>
+        <div class="span2 palette-fields">
+          <label>בסיס<input id="paletteBase" dir="ltr"></label>
+          <label>משני<input id="paletteSecondary" dir="ltr"></label>
+          <label>דומיננטי<input id="paletteDominant" dir="ltr"></label>
+          <label>הדגשה<input id="paletteAccent" dir="ltr"></label>
+        </div>
         <label class="span2">גופנים מותרים<input id="allowedFonts" dir="ltr"></label>
         <label class="span2">Assets מותרים<input id="allowedAssets" dir="ltr"></label>
       </div>
@@ -42,6 +47,7 @@
     <article class="panel prompt-panel">
       <div class="panel-head"><div><span class="step">02</span><h2>Prompt Builder</h2></div><div class="row"><button id="addBlock">+ מקטע</button><button id="copyPrompt" class="primary">העתק Prompt</button></div></div>
       <div class="mode-row"><label class="switch"><input id="rawMode" type="checkbox"><span>Raw Prompt mode</span></label><span id="promptLength" class="muted"></span></div>
+      <div id="imagePromptNotice" class="image-prompt-notice" hidden>📷 בניסוי זה יש תמונה. בשיחת ה־AI יש לצרף גם את תמונת המקור, בנוסף להדבקת ה־Prompt.</div>
       <div id="blocks" class="blocks"></div>
       <textarea id="rawPrompt" class="raw-editor" dir="ltr" hidden></textarea>
     </article>
