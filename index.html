@@ -35,11 +35,16 @@
           <label>הדגשה<input id="paletteAccent" dir="ltr"></label>
         </div>
         <label class="span2">גופנים מותרים<input id="allowedFonts" dir="ltr"></label>
-        <label class="span2">Assets מותרים<input id="allowedAssets" dir="ltr"></label>
+        <label class="span2">Assets / קישוטים מותרים<input id="allowedAssets" dir="ltr"></label>
+        <label class="span2">מסכות תמונה מותרות<input id="allowedMasks" dir="ltr"></label>
+        <label class="span2">צורות / שכבות מותרות<input id="allowedShapes" dir="ltr"></label>
       </div>
       <div class="subsection">
-        <div class="subhead"><strong>ספריית Assets לניסוי</strong><span class="muted">ה־Renderer מציג את האלמנטים האמיתיים לפי assetId</span></div>
-        <div id="assetLibrary" class="asset-library"></div>
+        <div class="subhead"><strong>ספריות עיצוב לניסוי</strong><span class="muted">גופנים · מסכות תמונה · צורות · קישוטים</span></div>
+        <h3 class="library-title">גופנים</h3><div id="fontLibrary" class="font-library"></div>
+        <h3 class="library-title">מסכות תמונה</h3><div id="maskLibrary" class="asset-library"></div>
+        <h3 class="library-title">צורות / שכבות</h3><div id="shapeLibrary" class="asset-library"></div>
+        <h3 class="library-title">קישוטים / Clusters</h3><div id="assetLibrary" class="asset-library"></div>
       </div>
       <div class="subsection"><div class="subhead"><strong>Protected Areas</strong><button id="addProtected">+ הוסף</button></div><div id="protectedAreas"></div></div>
     </article>
@@ -56,7 +61,7 @@
       <div class="panel-head"><div><span class="step">03</span><h2>AI Output Schema</h2></div><span class="tag">EDITABLE</span></div>
       <p class="muted">ב‑V0 זהו חוזה לדוגמה בתוך ה‑Prompt, לא JSON Schema פורמלי. ניתן לשנות אותו חופשי.</p>
       <textarea id="schema" class="code-editor" dir="ltr"></textarea>
-      <button id="resetSchema">אפס ל‑Schema v1</button>
+      <button id="resetSchema">אפס ל‑Schema v2</button>
     </article>
 
     <article class="panel response-panel">
